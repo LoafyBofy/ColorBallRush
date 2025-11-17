@@ -6,6 +6,8 @@ public class Platform : MonoBehaviour
 {
     [SerializeField] private List<Transform> _spawnPoints = new();
 
+    [field: SerializeField] public Transform RespawnPoint { get; private set; }
+
     private Dictionary<Transform, bool> _usedPoints = new();
     private List<GameObject> _spawnedObjects = new();
     private List<Transform> _keys = new();
@@ -19,10 +21,11 @@ public class Platform : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
+            var emptyPoints = _usedPoints.Where(x => x.Value == false).ToList();
+            if (emptyPoints.Count == 0) return;
             var objectInPool = pool.GetFree();
             if (_spawnedObjects.Contains(objectInPool) == false)
                 _spawnedObjects.Add(objectInPool);
-            var emptyPoints = _usedPoints.Where(x => x.Value == false).ToList();
             var randomTransformKey = emptyPoints.GetRandom();
             _usedPoints[randomTransformKey.Key] = true;
             objectInPool.SetActive(true);

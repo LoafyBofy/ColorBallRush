@@ -4,10 +4,11 @@ public class GamePlayBootstrap : MonoBehaviour
 {
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private PlayerBall _playerBall;
-    [SerializeField] private PlatformSpawner _spawner;
+    [SerializeField] private Spawner _spawner;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject _coinPrefab;
+    [SerializeField] private GameObject _wallPrefab;
 
     private void Awake()
     {
@@ -16,7 +17,9 @@ public class GamePlayBootstrap : MonoBehaviour
         _playerInput.Init(new InputSystem(), _playerBall);
 
         var coinFactory = new CoinFactory(_coinPrefab);
+        var wallFactory = new WallFactory(_wallPrefab);
         var coinsPool = new ObjectPool(coinFactory);
-        _spawner.Init(coinsPool);
+        var wallsPool = new ObjectPool(wallFactory);
+        _spawner.Init(_playerBall, coinsPool, wallsPool);
     }
 }
