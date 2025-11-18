@@ -5,6 +5,7 @@ public class GamePlayBootstrap : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private PlayerBall _playerBall;
     [SerializeField] private Spawner _spawner;
+    [SerializeField] private StartScreen _startScreen;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject _coinPrefab;
@@ -21,5 +22,7 @@ public class GamePlayBootstrap : MonoBehaviour
         var coinsPool = new ObjectPool(coinFactory);
         var wallsPool = new ObjectPool(wallFactory);
         _spawner.Init(_playerBall, coinsPool, wallsPool);
+
+        _startScreen.Init(_playerBall);
     }
 }

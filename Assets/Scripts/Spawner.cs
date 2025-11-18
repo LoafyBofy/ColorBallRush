@@ -50,7 +50,7 @@ public class Spawner : MonoBehaviour
             _platforms.Remove(farther);
             farther.transform.position = last.transform.position + new Vector3(0, 0, _spawnOffset);
             _platforms.Add(farther);
-            farther.SetDictionaryDefaultValues();
+            farther.ClearSpawnPoints();
             farther.DisableSpawnedObjects();
             farther.SpawnObjects(_coinsPool, Random.Range(_cointSpawnAmountMin,  _cointSpawnAmountMax));
             farther.SpawnObjects(_wallsPool, Random.Range(_wallSpawnAmountMin,  _wallSpawnAmountMax));

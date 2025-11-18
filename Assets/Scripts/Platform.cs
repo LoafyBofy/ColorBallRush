@@ -24,8 +24,8 @@ public class Platform : MonoBehaviour
             var emptyPoints = _usedPoints.Where(x => x.Value == false).ToList();
             if (emptyPoints.Count == 0) return;
             var objectInPool = pool.GetFree();
-            if (_spawnedObjects.Contains(objectInPool) == false)
-                _spawnedObjects.Add(objectInPool);
+            //if (_spawnedObjects.Contains(objectInPool) == false)
+            _spawnedObjects.Add(objectInPool);
             var randomTransformKey = emptyPoints.GetRandom();
             _usedPoints[randomTransformKey.Key] = true;
             objectInPool.SetActive(true);
@@ -33,12 +33,14 @@ public class Platform : MonoBehaviour
         }
     }
 
-    public void SetDictionaryDefaultValues()
+    public void ClearSpawnPoints()
     {
         for (int i = 0; i < _keys.Count; i++)
         {
             _usedPoints[_keys[i]] = false;
         }
+
+        _spawnedObjects.Clear();
     }
 
     public void DisableSpawnedObjects()

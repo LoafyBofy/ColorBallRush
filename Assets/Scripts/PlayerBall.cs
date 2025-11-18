@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent (typeof(Rigidbody))]
-public class PlayerBall : MonoBehaviour, IColor
+public class PlayerBall : PausedMonoBehaviour, IColor
 {
     [SerializeField] private float _moveOffset;
     [SerializeField] private float _moveSpeed;
@@ -10,6 +10,18 @@ public class PlayerBall : MonoBehaviour, IColor
     [SerializeField] private float _downForce;
     [SerializeField] private ColorsConfig _colorConfig;
 
+    public bool UseGravity
+    {
+        get
+        {
+            return _rb.useGravity;
+        }
+        set
+        {
+            _rb.useGravity = value;
+        }
+    }
+    public bool CanMove { get; set; } = false;
     public Color CurrentColor { get; set; }
 
     private Renderer _renderer;
@@ -28,6 +40,8 @@ public class PlayerBall : MonoBehaviour, IColor
 
     private void FixedUpdate()
     {
+        if (CanMove == false || IsPaused == true) return;
+
         _rb.MovePosition(_rb.position + transform.forward * _moveSpeed * Time.fixedDeltaTime);
     }
 
@@ -68,6 +82,8 @@ public class PlayerBall : MonoBehaviour, IColor
 
     public void MoveLeft()
     {
+        if (CanMove == false || IsPaused == true) return;
+
         if (_currentLine == 3) return;
         _rb.MovePosition(_rb.position - new Vector3(_moveOffset, 0, 0));
         _currentLine++;
@@ -75,6 +91,8 @@ public class PlayerBall : MonoBehaviour, IColor
 
     public void MoveRight()
     {
+        if (CanMove == false || IsPaused == true) return;
+
         if (_currentLine == 1) return;
         _rb.MovePosition(_rb.position + new Vector3(_moveOffset, 0, 0));
         _currentLine--;
@@ -82,19 +100,30 @@ public class PlayerBall : MonoBehaviour, IColor
 
     public void Jump()
     {
+        if (CanMove == false || IsPaused == true) return;
+
         if (_isGrounded == true)
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
 
     public void Down()
     {
+        if (CanMove == false || IsPaused == true) return;
+
         if (_isGrounded == false)
             _rb.AddForce(Vector3.down * _downForce, ForceMode.Impulse);
     }
 
     public void ChangeColorToRandom()
     {
-        CurrentColor = _colorConfig.GetRandomColor();
+        var newColor = _colorConfig.GetRandomColor();
+
+        while (newColor == CurrentColor)
+        {
+            newColor = _colorConfig.GetRandomColor();
+        }
+
+        CurrentColor = newColor;
         _renderer.material.color = CurrentColor;
     }
 
