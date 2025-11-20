@@ -1,27 +1,30 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
-public class ObjectPool
+public class ObjectPool<T> where T : MonoBehaviour
 {
-    private List<GameObject> _pool = new();
-    private Factory _factory;
+    public event Action<GameObject> Disabled;
 
-    public ObjectPool(Factory factory, int prepareAmount = 0)
+    private List<T> _pool = new();
+    private Factory<T> _factory;
+
+    public ObjectPool(Factory<T> factory)
     {
         _factory = factory;
-
-        if (prepareAmount > 0)
-            PrepareObjects(prepareAmount);
     }
 
-    public GameObject Create()
+    public GameObject Create(bool addInPool = false)
     {
         var newObject = _factory.GetItem();
-        Add(newObject);
-        return newObject;
+
+        if (addInPool)
+            Add(newObject);
+
+        return newObject.gameObject;
     }
 
-    public void Add(GameObject obj)
+    public void Add(T obj)
     {
         _pool.Add(obj);
     }
@@ -30,26 +33,21 @@ public class ObjectPool
     {
         for (int i = 0; i < _pool.Count; i++)
         {
-            if (_pool[i].activeSelf == false)
+            var obj = _pool[i].gameObject;
+
+            if (obj.activeSelf == false)
             {
-                return _pool[i];
+                _pool.Remove(_pool[i]);
+                return obj;
             }
         }
 
         return Create();
     }
 
-    public void Destroy(GameObject obj)
+    public void Destroy(T obj)
     {
         _pool.Remove(obj);
         GameObject.Destroy(obj);
-    }
-
-    private void PrepareObjects(int amount)
-    {
-        for (int i = 0; i < amount; i++)
-        {
-            Add(_factory.GetItem());
-        }
     }
 }

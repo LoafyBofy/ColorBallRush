@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CoinFactory : Factory
+public class CoinFactory : Factory<Coin>
 {
     private GameObject _coinPrefab;
 
@@ -9,10 +9,10 @@ public class CoinFactory : Factory
         _coinPrefab = coinPrefab;
     }
 
-    public override GameObject GetItem()
+    public override Coin GetItem()
     {
         GameObject coin = GameObject.Instantiate(_coinPrefab);
         coin.gameObject.SetActive(false);
-        return coin;
+        return coin.GetComponent<Coin>();
     }
 }

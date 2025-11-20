@@ -12,19 +12,24 @@ public class Platform : MonoBehaviour
     private List<GameObject> _spawnedObjects = new();
     private List<Transform> _keys = new();
 
-    public void Init()
+    private ObjectPool<Coin> _coinsPool;
+    private ObjectPool<Wall> _wallsPool;
+
+    public void Init(ObjectPool<Coin> coinsPool, ObjectPool<Wall> wallsPool)
     {
+        _coinsPool = coinsPool;
+        _wallsPool = wallsPool;
+
         InitDictionary();
     }
 
-    public void SpawnObjects(ObjectPool pool, int amount)
+    public void SpawnObjects<T>(ObjectPool<T> pool, int amount) where T : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
         {
             var emptyPoints = _usedPoints.Where(x => x.Value == false).ToList();
             if (emptyPoints.Count == 0) return;
-            var objectInPool = pool.GetFree();
-            //if (_spawnedObjects.Contains(objectInPool) == false)
+            GameObject objectInPool = pool.GetFree();
             _spawnedObjects.Add(objectInPool);
             var randomTransformKey = emptyPoints.GetRandom();
             _usedPoints[randomTransformKey.Key] = true;
@@ -40,15 +45,21 @@ public class Platform : MonoBehaviour
             _usedPoints[_keys[i]] = false;
         }
 
-        _spawnedObjects.Clear();
-    }
-
-    public void DisableSpawnedObjects()
-    {
         for (int i = 0; i < _spawnedObjects.Count; i++)
         {
             _spawnedObjects[i].SetActive(false);
+
+            if (_spawnedObjects[i].TryGetComponent(out Coin coin))
+            {
+                _coinsPool.Add(coin);
+            }
+            else if (_spawnedObjects[i].TryGetComponent(out Wall wall))
+            {
+                _wallsPool.Add(wall);
+            }
         }
+
+        _spawnedObjects.Clear();
     }
 
     private void InitDictionary()

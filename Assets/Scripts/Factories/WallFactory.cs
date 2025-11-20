@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WallFactory : Factory
+public class WallFactory : Factory<Wall>
 {
     private GameObject _wallPrefab;
 
@@ -9,10 +9,10 @@ public class WallFactory : Factory
         _wallPrefab = wallPrefab;
     }
 
-    public override GameObject GetItem()
+    public override Wall GetItem()
     {
         GameObject newObject = GameObject.Instantiate(_wallPrefab);
         newObject.SetActive(false);
-        return newObject;
+        return newObject.GetComponent<Wall>();
     }
 }

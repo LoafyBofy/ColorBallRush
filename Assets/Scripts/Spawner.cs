@@ -20,8 +20,8 @@ public class Spawner : MonoBehaviour
     [SerializeField, Range(1, 20)] private int _wallSpawnAmountMax;
 
     private PlayerBall _player;
-    private ObjectPool _coinsPool;
-    private ObjectPool _wallsPool;
+    private ObjectPool<Coin> _coinsPool;
+    private ObjectPool<Wall> _wallsPool;
 
     private void OnValidate()
     {
@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
             _wallSpawnAmountMin = _wallSpawnAmountMax - 1;
     }
 
-    public void Init(PlayerBall playerBall, ObjectPool coinsPool, ObjectPool wallsPool)
+    public void Init(PlayerBall playerBall, ObjectPool<Coin> coinsPool, ObjectPool<Wall> wallsPool)
     {
         _player = playerBall;
         _coinsPool = coinsPool;
@@ -51,7 +51,6 @@ public class Spawner : MonoBehaviour
             farther.transform.position = last.transform.position + new Vector3(0, 0, _spawnOffset);
             _platforms.Add(farther);
             farther.ClearSpawnPoints();
-            farther.DisableSpawnedObjects();
             farther.SpawnObjects(_coinsPool, Random.Range(_cointSpawnAmountMin,  _cointSpawnAmountMax));
             farther.SpawnObjects(_wallsPool, Random.Range(_wallSpawnAmountMin,  _wallSpawnAmountMax));
         }
@@ -71,7 +70,7 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < _platforms.Count; i++)
         {
-            _platforms[i].Init();
+            _platforms[i].Init(_coinsPool, _wallsPool);
 
             if (i > 0)
             {

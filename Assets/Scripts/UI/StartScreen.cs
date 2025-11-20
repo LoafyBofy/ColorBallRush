@@ -18,7 +18,10 @@ public class StartScreen : MonoBehaviour
     [SerializeField] private Button _startButtonPanel;
     [SerializeField] private RectTransform _pressAnuButtonTextTransform;
     [SerializeField] private Image _blackScreenPanel;
+    [SerializeField] private GameObject _pauseMenuCanvas;
+    [SerializeField] private GameObject _scoreAndCoinsCanvas;
 
+    private ScoreUpdater _updater;
     private PlayerBall _player;
     private Tween _textTween;
     private Tween _blackScreenTween;
@@ -27,7 +30,7 @@ public class StartScreen : MonoBehaviour
     public void Init(PlayerBall player)
     {
         _player = player;
-
+        _updater = ServiceLocator.GetService(_updater);
         SetListenerForButton();
         AnimateText();
         HideBlackPanel();
@@ -82,14 +85,17 @@ public class StartScreen : MonoBehaviour
             yield return new WaitForSeconds(_playerChangeColorDelay);
         }
 
+        _updater.IsPaused = false;
         _player.IsPaused = false;
         _player.CanMove = true;
         _player.UseGravity = true;
-
+        
         _playerAppearingTween.Kill();
         _textTween.Kill();
         _blackScreenTween.Kill();
 
+        _scoreAndCoinsCanvas.SetActive(true);
+        _pauseMenuCanvas.SetActive(true);
         gameObject.SetActive(false);
     }
 }
