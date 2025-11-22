@@ -4,7 +4,7 @@ public class Wallet
 {
     private uint _coins = 0;
 
-    public uint Coins { get; private set; }
+    public uint Coins { get { return _coins; } }
     public event Action<uint> Change;
 
     public void AddCoin()

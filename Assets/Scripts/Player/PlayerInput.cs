@@ -29,6 +29,8 @@ public class PlayerInput : MonoBehaviour
         _inputSystem.Gameplay.Right.performed -= PressRight;
         _inputSystem.Gameplay.Jump.performed -= Jump;
         _inputSystem.Gameplay.Down.performed -= Down;
+
+        _inputSystem.Disable();
     }
 
     private void PressLeft(InputAction.CallbackContext obj)

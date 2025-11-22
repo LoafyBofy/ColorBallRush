@@ -11,8 +11,10 @@ public class CoinFactory : Factory<Coin>
 
     public override Coin GetItem()
     {
-        GameObject coin = GameObject.Instantiate(_coinPrefab);
+        GameObject obj = GameObject.Instantiate(_coinPrefab);
+        var coin = obj.GetComponent<Coin>();
+        coin.Init();
         coin.gameObject.SetActive(false);
-        return coin.GetComponent<Coin>();
+        return coin;
     }
 }

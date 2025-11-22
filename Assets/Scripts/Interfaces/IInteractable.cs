@@ -3,5 +3,5 @@ using System;
 
 public interface IInteractable
 {
-    public void Interact(Action callback);
+    public void Interact(Action callback = null);
 }

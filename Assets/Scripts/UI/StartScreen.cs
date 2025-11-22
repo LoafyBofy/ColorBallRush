@@ -21,7 +21,9 @@ public class StartScreen : MonoBehaviour
     [SerializeField] private GameObject _pauseMenuCanvas;
     [SerializeField] private GameObject _scoreAndCoinsCanvas;
 
-    private ScoreUpdater _updater;
+    [Header("Paused Objects")]
+    [SerializeField] private PausedMonoBehaviour[] _pausedMonoBehaviour;
+
     private PlayerBall _player;
     private Tween _textTween;
     private Tween _blackScreenTween;
@@ -30,7 +32,6 @@ public class StartScreen : MonoBehaviour
     public void Init(PlayerBall player)
     {
         _player = player;
-        _updater = ServiceLocator.GetService(_updater);
         SetListenerForButton();
         AnimateText();
         HideBlackPanel();
@@ -85,8 +86,13 @@ public class StartScreen : MonoBehaviour
             yield return new WaitForSeconds(_playerChangeColorDelay);
         }
 
-        _updater.IsPaused = false;
-        _player.IsPaused = false;
+        foreach (var item in _pausedMonoBehaviour)
+        {
+            item.IsPaused = false;
+        }
+        //_speedIncreaser.IsPaused = false;
+        //_updater.IsPaused = false;
+        //_player.IsPaused = false;
         _player.CanMove = true;
         _player.UseGravity = true;
         

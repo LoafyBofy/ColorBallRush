@@ -14,11 +14,13 @@ public class Platform : MonoBehaviour
 
     private ObjectPool<Coin> _coinsPool;
     private ObjectPool<Wall> _wallsPool;
+    private ObjectPool<ColorChanger> _colorChangerPool;
 
-    public void Init(ObjectPool<Coin> coinsPool, ObjectPool<Wall> wallsPool)
+    public void Init(ObjectPool<Coin> coinsPool, ObjectPool<Wall> wallsPool, ObjectPool<ColorChanger> changer)
     {
         _coinsPool = coinsPool;
         _wallsPool = wallsPool;
+        _colorChangerPool = changer;
 
         InitDictionary();
     }
@@ -56,6 +58,10 @@ public class Platform : MonoBehaviour
             else if (_spawnedObjects[i].TryGetComponent(out Wall wall))
             {
                 _wallsPool.Add(wall);
+            }
+            else if (_spawnedObjects[i].TryGetComponent(out ColorChanger changer))
+            {
+                _colorChangerPool.Add(changer);
             }
         }
 

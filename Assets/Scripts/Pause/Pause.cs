@@ -4,12 +4,9 @@ public class Pause : MonoBehaviour
 {
     [SerializeField] private PausedMonoBehaviour[] _pausedMonoBehaviours;
 
-    public void SwitchPauseState()
+    public void Init()
     {
-        for (int i = 0; i < _pausedMonoBehaviours.Length; i++)
-        {
-            _pausedMonoBehaviours[i].IsPaused = !_pausedMonoBehaviours[i].IsPaused;
-        }
+        ServiceLocator.RegisterService(this);
     }
 
     public void SetPauseState(bool isPaused)

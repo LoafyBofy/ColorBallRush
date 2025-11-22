@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent (typeof(Rigidbody))]
-public class PlayerBall : PausedMonoBehaviour, IColor
+public class PlayerBall : PausedMonoBehaviour, IColor, ISpeed
 {
     [SerializeField] private float _moveOffset;
     [SerializeField] private float _moveSpeed;
@@ -37,6 +37,17 @@ public class PlayerBall : PausedMonoBehaviour, IColor
     }
     public bool CanMove { get; set; } = false;
     public Color CurrentColor { get; set; }
+    public float Speed
+    {
+        get
+        {
+            return _moveSpeed;
+        }
+        set
+        {
+            _moveSpeed = value;
+        }
+    }
 
     private Vector3 _stopedVelocity;
     private Renderer _renderer;
@@ -45,11 +56,13 @@ public class PlayerBall : PausedMonoBehaviour, IColor
     private Rigidbody _rb;
     private float _currentOffset = 0f;
     private Wallet _collector;
+    private SfxController _sfx;
 
     public event Action Died;
 
     public void Init()
     {
+        _sfx = ServiceLocator.GetService(_sfx);
         _collector = ServiceLocator.GetService(_collector);
         _rb = GetComponent<Rigidbody>();
         _renderer = GetComponentInChildren<Renderer>();
@@ -80,14 +93,19 @@ public class PlayerBall : PausedMonoBehaviour, IColor
         {
             coin.Interact(_collector.AddCoin);
         }
+        else if (other.TryGetComponent(out ColorChanger changer))
+        {
+            changer.Interact(ChangeColorToRandom);
+        }
         else if (other.TryGetComponent(out Wall wall))
         {
             if (wall.CurrentColor == CurrentColor)
             {
-                wall.gameObject.SetActive(false);
+                wall.Interact();
             }
             else
             {
+                _sfx.Hit();
                 Die();
             }
         }
@@ -116,7 +134,10 @@ public class PlayerBall : PausedMonoBehaviour, IColor
         if (CanMove == false || IsPaused == true) return;
 
         if (_isGrounded == true)
+        {
+            _sfx.Jump();
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        }
     }
 
     public void Down()

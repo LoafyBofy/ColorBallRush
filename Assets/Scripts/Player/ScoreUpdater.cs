@@ -6,6 +6,7 @@ public class ScoreUpdater : PausedMonoBehaviour
     private uint _score;
     private double _currentScore = 0;
 
+    public uint Score { get { return _score; } }
     public event Action<uint> Change;
 
     public void Init()

@@ -13,8 +13,14 @@ public class Coin : MonoBehaviour, IInteractable
 
     private Tween _moveTween;
     private Tween _rotationTween;
+    private SfxController _sfx;
 
-    public void Interact(Action callback)
+    public void Init()
+    {
+        _sfx = ServiceLocator.GetService(_sfx);
+    }
+
+    public void Interact(Action callback = null)
     {
         PickUp();
         callback?.Invoke();
@@ -23,6 +29,7 @@ public class Coin : MonoBehaviour, IInteractable
 
     private void PickUp()
     {
+        _sfx.PickUpCoin();
         // выбрасывать текст над моделькой
     }
 
