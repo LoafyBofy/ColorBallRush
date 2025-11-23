@@ -12,6 +12,7 @@ public class Observer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _resultScore;
     [SerializeField] private TextMeshProUGUI _resultCoins;
 
+    private DataSaver _saver;
     private Pause _pause;
     private Wallet _wallet;
     private ScoreUpdater _scoreResult;
@@ -24,6 +25,7 @@ public class Observer : MonoBehaviour
         _player = player;
         _spawner = spawner;
         _pause = ServiceLocator.GetService(_pause);
+        _saver = ServiceLocator.GetService(_saver);
     }
 
     private void OnEnable()
@@ -74,6 +76,11 @@ public class Observer : MonoBehaviour
 
         _resultScore.text = _scoreResult.Score.ToString();
         _resultCoins.text = _wallet.Coins.ToString();
+
+        _saver.SetScore((int)_scoreResult.Score);
+
+        int currentCoinsAmount = _saver.GetCoins();
+        _saver.SetCoins(currentCoinsAmount + (int)_wallet.Coins);
     }
 
     public void GiveUp()

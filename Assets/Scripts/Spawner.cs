@@ -5,13 +5,15 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [Header("Platforms")]
+    [SerializeField] private GameObject _platformPrefab;
+    [SerializeField] private Vector3 _startSpawnPosition;
+    [SerializeField] private int _startPlatformAmount = 3;
     [SerializeField] private float _distanceForDisable = 140f;
     [SerializeField] private float _spawnOffsetZ = 200f;
     [SerializeField] private float _spawnOffsetY = 30f;
     [SerializeField] private float _spawnOffsetYMin = 0f;
     [SerializeField] private float _spawnOffsetYMax = 0f;
-    [SerializeField] private List<Platform> _platforms = new();
-
+    
     [Header("Spawn Item Amount")]
     [SerializeField, Range(0, 20)] private int _cointSpawnAmountMin;
     [SerializeField, Range(1, 20)] private int _cointSpawnAmountMax;
@@ -20,6 +22,19 @@ public class Spawner : MonoBehaviour
     [SerializeField, Range(1, 10)] private int _colorChangerSpawnAmountMin;
     [SerializeField, Range(1, 10)] private int _colorChangerSpawnAmountMax;
 
+    public GameObject PlatformPrefab
+    {
+        get { return _platformPrefab; }
+        set
+        {
+            if (value != null)
+            {
+                _platformPrefab = value;
+            }
+        }
+    }
+
+    private List<Platform> _platforms = new();
     private PlayerBall _player;
     private ObjectPool<Coin> _coinsPool;
     private ObjectPool<Wall> _wallsPool;
@@ -45,6 +60,7 @@ public class Spawner : MonoBehaviour
         _wallsPool = wallsPool;
         _colorChangerPool = colorChangerPool;
 
+        SpawnPlatforms(_startPlatformAmount);
         InitPlatforms();
     }
 
@@ -64,6 +80,17 @@ public class Spawner : MonoBehaviour
             farther.SpawnObjects(_colorChangerPool, Random.Range(_colorChangerSpawnAmountMin, _colorChangerSpawnAmountMax));
             farther.SpawnObjects(_coinsPool, Random.Range(_cointSpawnAmountMin,  _cointSpawnAmountMax));
             farther.SpawnObjects(_wallsPool, Random.Range(_wallSpawnAmountMin,  _wallSpawnAmountMax));
+        }
+    }
+
+    private void SpawnPlatforms(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject platformObject = Instantiate(_platformPrefab, _startSpawnPosition, Quaternion.identity);
+            _startSpawnPosition.z += _spawnOffsetZ;
+            Platform platform = platformObject.GetComponent<Platform>();
+            _platforms.Add(platform);
         }
     }
 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Surface
   - Interactive
+  - Decoration
   layers:
   - Default
   - TransparentFX

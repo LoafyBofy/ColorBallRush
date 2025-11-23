@@ -10,11 +10,12 @@ public class GamePlayBootstrap : MonoBehaviour
     [SerializeField] private CoinsView _coinsView;
     [SerializeField] private ScoreUpdater _updater;
     [SerializeField] private SpeedIncreaser _speedIncreaser;
-    [SerializeField] private FogMovable _fogMovable;
+    [SerializeField] private MovableFloor _fogMovable;
     [SerializeField] private Observer _observer;
     [SerializeField] private Pause _pause;
     [SerializeField] private MusicController _musicController;
     [SerializeField] private SfxController _sfxController;
+    [SerializeField] private DecorationSetter _decorationSetter;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject _coinPrefab;
@@ -29,6 +30,8 @@ public class GamePlayBootstrap : MonoBehaviour
 
         ServiceLocator.RegisterService(_dataSaver);
         ServiceLocator.RegisterService(new Wallet());
+
+        _decorationSetter.Init(_spawner);
 
         _sfxController.Init(_dataSaver);
 

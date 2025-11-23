@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d934d1c450f3384185ed243f7602ed6, type: 3}
+  m_Name: Pirate
+  m_EditorClassIdentifier: 
+  Name: "\u041F\u0438\u0440\u0430\u0442\u0441\u043A\u0438\u0439"
+  PlatformPrefab: {fileID: 6880893149134109753, guid: d7e0b0d1a2342d243b4836dcc4e1977e, type: 3}
+  FloorMaterial: {fileID: 2100000, guid: 867ec64eba6038b4e95709fa94008027, type: 2}
+  LevelScreenShot: {fileID: 21300000, guid: 19c474c92df7fe244975d7b51c444af9, type: 3}
+  Decorations:
+  - {fileID: 919132149155446097, guid: 581f64bc48d9a6b4da7e2dd97f360cf2, type: 3}
+  - {fileID: 919132149155446097, guid: 33b9f4092ea048a4aa9ddf0f3eda288d, type: 3}
+  - {fileID: 919132149155446097, guid: 6e0f96245455b244294a189b2057ac22, type: 3}
+  - {fileID: 919132149155446097, guid: ff345dec1022bec498e355432c815213, type: 3}
+  - {fileID: 919132149155446097, guid: b5a0f89e8f6ae1f4ba159ed1ca3abcc6, type: 3}
+  - {fileID: 919132149155446097, guid: bfcecda8ee0c59d468c2d98cbac9c7f2, type: 3}
+  - {fileID: 919132149155446097, guid: 65c3c292d5baf304fb0b414e1e15920e, type: 3}
+  - {fileID: 919132149155446097, guid: b555a56fff854d54db8dec4b9bcebbb5, type: 3}
+  - {fileID: 919132149155446097, guid: 743ee51d5c608c545abdf38bada49697, type: 3}
+  - {fileID: 919132149155446097, guid: 2b0a7e4850c44ac46a348afd55e41156, type: 3}

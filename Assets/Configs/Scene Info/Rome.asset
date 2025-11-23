@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d934d1c450f3384185ed243f7602ed6, type: 3}
+  m_Name: Rome
+  m_EditorClassIdentifier: 
+  Name: "\u0420\u0438\u043C\u0441\u043A\u0438\u0439"
+  PlatformPrefab: {fileID: 1332700462617623285, guid: 753618b0f1d77804f9886a155108474f, type: 3}
+  FloorMaterial: {fileID: 2100000, guid: f112b988042d5844d86a06f124d4ea41, type: 2}
+  LevelScreenShot: {fileID: 21300000, guid: 5a802976845882145a253d4d26cad163, type: 3}
+  Decorations:
+  - {fileID: 919132149155446097, guid: 498a9f94b34a948468e0fc6c873de69d, type: 3}
+  - {fileID: 919132149155446097, guid: f840dfe8a59e2fe448872964d5f5e80c, type: 3}
+  - {fileID: 919132149155446097, guid: da9dbf196737d6f46b9042401189c29a, type: 3}
+  - {fileID: 919132149155446097, guid: 91e87d71311639648be65d02c163e0b9, type: 3}
+  - {fileID: 919132149155446097, guid: 2a2a2fc9568c9034080504aa83f76f61, type: 3}
+  - {fileID: 919132149155446097, guid: 24636163f5f25424ea665f5f0965fb65, type: 3}
+  - {fileID: 919132149155446097, guid: 22763d5615a913248ac20ab222b065f7, type: 3}
+  - {fileID: 919132149155446097, guid: d48fdf981bdecc146b24fde228c0d8b5, type: 3}
