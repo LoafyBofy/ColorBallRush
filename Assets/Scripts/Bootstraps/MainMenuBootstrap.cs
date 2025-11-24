@@ -5,9 +5,11 @@ public class MainMenuBootstrap : MonoBehaviour
     [SerializeField] private MusicController _musicController;
     [SerializeField] private SfxController _sfxController;
     [SerializeField] private SceneShop _sceneShop;
+    [SerializeField] private SkinShop _skinShop;
 
     [Space]
     [SerializeField] private SceneInfo _standartScene;
+    [SerializeField] private SkinInfo _standartSkin;
 
     private DataSaver _dataSaver;
 
@@ -20,6 +22,7 @@ public class MainMenuBootstrap : MonoBehaviour
         _musicController.Init(_dataSaver);
         _sfxController.Init(_dataSaver);
         _sceneShop.Init(_dataSaver);
+        _skinShop.Init(_dataSaver);
     }
 
     private void LoadBaseParams()
@@ -29,6 +32,13 @@ public class MainMenuBootstrap : MonoBehaviour
         if (string.IsNullOrEmpty(activeScene))
         {
             _dataSaver.SetActiveScene(_standartScene.Name);
+        }
+
+        _dataSaver.SetSkinAccess(_standartSkin.Name, true);
+        string activeSkin = _dataSaver.GetActiveSkin();
+        if (string.IsNullOrEmpty(activeSkin))
+        {
+            _dataSaver.SetActiveSkin(_standartSkin.Name);
         }
     }
 

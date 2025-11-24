@@ -15,11 +15,13 @@ MonoBehaviour:
   Name: "\u041B\u0435\u0442\u043D\u0438\u0439 \u043B\u0435\u0441"
   PlatformPrefab: {fileID: 9076619570435548002, guid: 4a567b7dbfa95f342a1b9fc2e2de6b87, type: 3}
   FloorMaterial: {fileID: 2100000, guid: 38efa2495a27ae64cb42617019e33b32, type: 2}
+  CanFloorTextureMove: 1
   LevelScreenShot: {fileID: 21300000, guid: 807f4d8c768866f44ab39bf6d31a2ddc, type: 3}
   Decorations:
-  - {fileID: 919132149155446097, guid: 8d94a63f57a8e4f42a6029caf907500b, type: 3}
-  - {fileID: 919132149155446097, guid: c3b2131175864dc4796211769c9a5041, type: 3}
-  - {fileID: 919132149155446097, guid: 0a14b59dcb1f81c4e890d6ffc74f106a, type: 3}
-  - {fileID: 919132149155446097, guid: 7bdf15bbc23051242bcd2bc811d15c7a, type: 3}
-  - {fileID: 919132149155446097, guid: 741900586b0abe74a8b1014828cadeb7, type: 3}
-  - {fileID: 919132149155446097, guid: 0bd5170eb3e2b864d9feaafb0c0577f9, type: 3}
+  - {fileID: 1987575598795318778, guid: b671bceb5ebce0d47a8461d70c4e7130, type: 3}
+  - {fileID: 543144990463893913, guid: cda28c0d1c247d24e920a73f8af1f494, type: 3}
+  - {fileID: 4159662160440726405, guid: 8172c5402bb92ce44811c818ec1ccfdb, type: 3}
+  - {fileID: 2818243948894469687, guid: 3d6d1b80d94a25442b0bbeb7f0c0b2c4, type: 3}
+  - {fileID: 8804875673907483330, guid: a32dd4c1d768aa941b14b64bd4b50255, type: 3}
+  - {fileID: 8413285239955740310, guid: f85304d209f69fc4b8c49da18be36e7e, type: 3}
+  - {fileID: 3095750663631383141, guid: 4ba1e84996e6c604b9e477541f88cf98, type: 3}

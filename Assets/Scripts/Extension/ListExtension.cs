@@ -7,4 +7,12 @@ public static class ListExtension
     {
         return list[Random.Range(0, list.Count)];
     }
+
+    public static T GetRandomAndRemove<T>(this List<T> list)
+    {
+        int index = Random.Range(0, list.Count);
+        var item = list[index];
+        list.RemoveAt(index);
+        return item;
+    }
 }

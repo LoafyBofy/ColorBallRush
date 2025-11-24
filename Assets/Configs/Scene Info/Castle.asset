@@ -15,17 +15,17 @@ MonoBehaviour:
   Name: "\u0417\u0430\u043C\u043E\u043A"
   PlatformPrefab: {fileID: 7742316866430152179, guid: 9eaddf8a6189665468f94f1f011d663f, type: 3}
   FloorMaterial: {fileID: 2100000, guid: 1e16b642109be7040a7f589235223c46, type: 2}
+  CanFloorTextureMove: 1
   LevelScreenShot: {fileID: 21300000, guid: 78832ddd2385b824287335aedf7f6d4d, type: 3}
   Decorations:
-  - {fileID: 919132149155446097, guid: e489fbafc4eb7f94ba0742195740fc9e, type: 3}
-  - {fileID: 919132149155446097, guid: ce9b745c53dd8c84eb617a00e561b693, type: 3}
-  - {fileID: 919132149155446097, guid: 9f22675b106f3e54ab577d29d0ce4907, type: 3}
-  - {fileID: 919132149155446097, guid: 8c4f96cf3cde9a945bb7b1b78accb63b, type: 3}
-  - {fileID: 919132149155446097, guid: 48112fca90b94ba448a13fa23db283fd, type: 3}
-  - {fileID: 919132149155446097, guid: 413e6c8613364c740b1085986868c65d, type: 3}
-  - {fileID: 919132149155446097, guid: f504160e42bf56240813425c13aa0d08, type: 3}
-  - {fileID: 919132149155446097, guid: 69348f87f2ba62b418b3ca8ea260adfb, type: 3}
-  - {fileID: 919132149155446097, guid: 22885d5e3e0d4304bb8732586672a8bd, type: 3}
-  - {fileID: 919132149155446097, guid: f30bdd844182bad4bb2e0a15139f92e7, type: 3}
-  - {fileID: 919132149155446097, guid: f49f2b82710163e4c9684a9a9e285a68, type: 3}
-  - {fileID: 919132149155446097, guid: 8e33354a68f224a40b38b988e0331a19, type: 3}
+  - {fileID: 3245978137431210032, guid: feeb3adc025bf5d46a7aea08b8c310c6, type: 3}
+  - {fileID: 7999471075998984145, guid: 89b027221f0788f4cba9e9ef30acb0d2, type: 3}
+  - {fileID: 8098257605106710913, guid: 2ed6bba616cb68f498ea244bf6bab1d3, type: 3}
+  - {fileID: 4952160525931151578, guid: fd6f903862549e24e82104096fb4f4cf, type: 3}
+  - {fileID: 2376967866408797642, guid: 34697998b0e85aa478d1f6288d6892d9, type: 3}
+  - {fileID: 5758980822613452163, guid: b82dfdede90def34a843fb87b3081cd7, type: 3}
+  - {fileID: 1166817020625837248, guid: 537047f06d53a8f42aa5c2982a976fec, type: 3}
+  - {fileID: 786685927068479520, guid: 6138e083676daf04d955a6a5089c4f4a, type: 3}
+  - {fileID: 2526189659425845679, guid: 9e850dc7810027d408eb1ea1428ff9ca, type: 3}
+  - {fileID: 5049296106575927064, guid: 583cd3f3b8f459e468ac22d1d8a5bd29, type: 3}
+  - {fileID: 8167928263331747552, guid: db590e4de3ad02148bde61af12e5a85b, type: 3}

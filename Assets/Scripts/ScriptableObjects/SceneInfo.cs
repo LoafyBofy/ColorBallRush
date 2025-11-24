@@ -7,6 +7,7 @@ public class SceneInfo : ScriptableObject
     public string Name;
     public GameObject PlatformPrefab;
     public Material FloorMaterial;
+    public bool CanFloorTextureMove = false;
     public Sprite LevelScreenShot;
     public List<GameObject> Decorations = new();
 

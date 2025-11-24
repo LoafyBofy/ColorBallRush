@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca893f4526426e49bdc6b8ed1efcf8a, type: 3}
+  m_Name: Aura
+  m_EditorClassIdentifier: 
+  Name: "\u0410\u0443\u0440\u0430"
+  Material: {fileID: 2100000, guid: 21390707ef2c124468516e0294d5583e, type: 2}
+  ScreenShot: {fileID: 21300000, guid: 66be5a10bad80c5488ec5a7d4b427a09, type: 3}

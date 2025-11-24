@@ -15,5 +15,6 @@ MonoBehaviour:
   Name: "\u0421\u0442\u0430\u043D\u0434\u0430\u0440\u0442\u043D\u044B\u0439"
   PlatformPrefab: {fileID: 1218810422491529681, guid: a6755f62b9676414188a85a54db3b1d4, type: 3}
   FloorMaterial: {fileID: 2100000, guid: 30a5178bf239cbe4280bc3d5df144ef8, type: 2}
+  CanFloorTextureMove: 0
   LevelScreenShot: {fileID: 21300000, guid: 51011110cf64c5e429d3fbd9efcb05cf, type: 3}
   Decorations: []

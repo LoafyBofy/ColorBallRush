@@ -158,7 +158,36 @@ public class PlayerBall : PausedMonoBehaviour, IColor, ISpeed
         }
 
         CurrentColor = newColor;
+
         _renderer.material.color = CurrentColor;
+        _renderer.material.SetColor("_BaseColor", CurrentColor);
+        _renderer.material.SetColor("_glow_color", CurrentColor);
+        _renderer.material.SetColor("_Color", CurrentColor);
+
+        //try
+        //{
+        //    _renderer.material.color = CurrentColor;
+        //    return;
+        //} 
+        //catch { }
+        //try
+        //{
+        //    _renderer.material.SetColor("_glow_color", CurrentColor);
+        //    return;
+        //} 
+        //catch { }
+        //try
+        //{
+        //    _renderer.material.SetColor("_Color", CurrentColor);
+        //    return;
+        //} 
+        //catch { }
+        //try
+        //{
+        //    _renderer.material.SetColor("_BaseColor", CurrentColor);
+        //    return;
+        //} 
+        //catch { }
     }
 
     private void Die()

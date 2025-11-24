@@ -96,7 +96,7 @@ public class SceneShop : MonoBehaviour
                 _coinAmount.text = _coins.ToString();
                 _saver.SetCoins(_coins);
                 _buyButton.interactable = false;
-                _buyButtonText.text = "Открыто";
+                _buyButtonText.text = "Используется";
                 _priceText.gameObject.SetActive(false);
             }
         }

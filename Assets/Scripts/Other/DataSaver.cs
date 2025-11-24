@@ -7,6 +7,7 @@ public class DataSaver
     private const string KEY_COINS_AMOUNT = "COINS_AMOUNT";
     private const string KEY_SCORE_AMOUNT = "SCORE_AMOUNT";
     private const string KEY_ACTIVE_SCENE = "ACTIVE_SCENE";
+    private const string KEY_ACTIVE_SKIN = "ACTIVE_SKIN";
 
     public float GetSfxVolume()
     {
@@ -66,5 +67,25 @@ public class DataSaver
     public void SetScore(int amount)
     {
         PlayerPrefs.SetInt(KEY_SCORE_AMOUNT, amount);
+    }
+
+    public int GetSkinAccess(string skinName)
+    {
+        return PlayerPrefs.GetInt(skinName, -1);
+    }
+
+    public void SetSkinAccess(string skinName, bool isOpen)
+    {
+        PlayerPrefs.SetInt(skinName, isOpen ? 1 : -1);
+    }
+
+    public string GetActiveSkin()
+    {
+        return PlayerPrefs.GetString(KEY_ACTIVE_SKIN);
+    }
+
+    public void SetActiveSkin(string skinName)
+    {
+        PlayerPrefs.SetString(KEY_ACTIVE_SKIN, skinName);
     }
 }
