@@ -121,5 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20fb54af8da78d144a41e969a26ef799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreForDectroy: 50
   _config: {fileID: 11400000, guid: 5710a1642124e9b4db871a0bd8356f2a, type: 2}
   _alwaysDestoy: 0
+  _animationTime: 0.5

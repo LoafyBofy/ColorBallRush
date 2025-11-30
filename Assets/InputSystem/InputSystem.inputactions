@@ -25,15 +25,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Touch",
-                    "type": "Value",
-                    "id": "bd1cc380-4a72-4538-8e41-3364e3a60d45",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Left",
                     "type": "Button",
                     "id": "ae010d30-4c46-412f-b1d2-010992c33a97",
@@ -94,17 +85,6 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "af1c2da8-cfcc-40c8-9787-80c40415fdcc",
-                    "path": "<Touchscreen>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Touch",
-                    "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

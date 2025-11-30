@@ -37,16 +37,24 @@ public class StartScreen : MonoBehaviour
         HideBlackPanel();
     }
 
+    private void Update()
+    {
+        if (Input.anyKey)
+        {
+            StartGame();
+        }
+    }
+
     private void SetListenerForButton()
     {
-        _startButtonPanel.onClick.AddListener
-            ( () =>
-                {
-                    AnimatePlayer();
-                    _startButtonPanel.gameObject.SetActive(false);
-                    _pressAnuButtonTextTransform.gameObject.SetActive(false);
-                }
-            );
+        _startButtonPanel.onClick.AddListener(StartGame);
+    }
+
+    private void StartGame()
+    {
+        AnimatePlayer();
+        _startButtonPanel.gameObject.SetActive(false);
+        _pressAnuButtonTextTransform.gameObject.SetActive(false);
     }
 
     private void AnimateText()

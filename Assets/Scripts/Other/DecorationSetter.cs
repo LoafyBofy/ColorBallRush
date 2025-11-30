@@ -65,6 +65,6 @@ public class DecorationSetter : MonoBehaviour
 
     private void SetDecorationsOnFloor()
     {
-        _movableFloor.SetDecorationObjects(_sceneInfo.Decorations, _movableFloor.SpawnPointCount);
+        _movableFloor.SetDecorationObjects(_sceneInfo.Decorations);
     }
 }

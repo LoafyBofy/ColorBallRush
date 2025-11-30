@@ -27,7 +27,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -53,9 +53,9 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _fresnel_power: 1.81
+    - _fresnel_power: 0.2
     - _glow_speed: 0.88
-    - _glow_spread: 1.05
+    - _glow_spread: 0.5
     - _wobble_amount: 0.2
     - _wobble_distance: 0.003
     - _wobble_frequency: 8.28

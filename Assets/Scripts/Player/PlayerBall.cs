@@ -8,6 +8,7 @@ public class PlayerBall : PausedMonoBehaviour, IColor, ISpeed
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _downForce;
+    [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _transitionSpeed;
     [SerializeField] private ColorsConfig _colorConfig;
     [SerializeField] private LayerMask _surfaceLayerMask;
@@ -57,6 +58,7 @@ public class PlayerBall : PausedMonoBehaviour, IColor, ISpeed
     private float _currentOffset = 0f;
     private Wallet _collector;
     private SfxController _sfx;
+    private Transform _model;
 
     public event Action Died;
 
@@ -67,6 +69,7 @@ public class PlayerBall : PausedMonoBehaviour, IColor, ISpeed
         _rb = GetComponent<Rigidbody>();
         _renderer = GetComponentInChildren<Renderer>();
         ChangeColorToRandom();
+        _model = transform.GetChild(0);
     }
 
     private void Update()
@@ -85,6 +88,8 @@ public class PlayerBall : PausedMonoBehaviour, IColor, ISpeed
 
         var newPosition = new Vector3(_currentOffset, _rb.position.y, _rb.position.z);
         _rb.position = Vector3.MoveTowards(_rb.position, newPosition, _transitionSpeed * Time.fixedDeltaTime);
+
+        _model.Rotate(new Vector3(_rotationSpeed * Time.fixedDeltaTime, 0, 0));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -162,6 +167,7 @@ public class PlayerBall : PausedMonoBehaviour, IColor, ISpeed
         _renderer.material.color = CurrentColor;
         _renderer.material.SetColor("_BaseColor", CurrentColor);
         _renderer.material.SetColor("_glow_color", CurrentColor);
+        _renderer.material.SetColor("_aura_base_color", CurrentColor);
         _renderer.material.SetColor("_Color", CurrentColor);
 
         //try

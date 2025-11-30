@@ -93,7 +93,7 @@ public class SkinShop : MonoBehaviour
             {
                 _skins[_index].Buy(_saver);
                 _coins -= _price;
-                _coinAmount.text = _coins.ToString();
+                SetCoinsAmount();
                 _saver.SetCoins(_coins);
                 _buyButton.interactable = false;
                 _buyButtonText.text = "Используется";
@@ -107,6 +107,11 @@ public class SkinShop : MonoBehaviour
         int loadedCoin = _saver.GetCoins();
         if (loadedCoin == -1) _coins = 0;
         else _coins = loadedCoin;
+        SetCoinsAmount();
+    }
+
+    public void SetCoinsAmount()
+    {
         _coinAmount.text = _coins.ToString();
     }
 

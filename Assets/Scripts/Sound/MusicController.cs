@@ -1,11 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEngine.Audio;
 
 public class MusicController : PausedMonoBehaviour
 {
-    [SerializeField] private List<AudioResource> _musics = new();
+    [SerializeField] private List<AudioSource> _musics = new();
     [SerializeField] private float _risingTime = 2.5f;
     [SerializeField] private float _fadeTime = 3f;
 
@@ -32,7 +31,8 @@ public class MusicController : PausedMonoBehaviour
         _risingStep = CalculateStep(_risingTime);
         _fadeStep = CalculateStep(_fadeTime);
 
-        _currentTrack.resource = ChangeTrack();
+        OffAll();
+        _currentTrack = ChangeTrack();
         _currentTrack.Play();
         _currentTrack.volume = 0;
     }
@@ -43,7 +43,8 @@ public class MusicController : PausedMonoBehaviour
 
         if (_currentTrack.isPlaying == false)
         {
-            _currentTrack.resource = ChangeTrack();
+            OffAll();
+            _currentTrack = ChangeTrack();
             _currentTrack.Play();
             _currentTrack.volume = 0;
         }
@@ -61,7 +62,7 @@ public class MusicController : PausedMonoBehaviour
         }
     }
 
-    public void PauseTack(bool isPaused)
+    public void PauseTrack(bool isPaused)
     {
         if (isPaused) 
             _currentTrack.Pause();
@@ -93,7 +94,15 @@ public class MusicController : PausedMonoBehaviour
             return 0;
     }
 
-    private AudioResource ChangeTrack()
+    private void OffAll()
+    {
+        foreach (var item in _musics)
+        {
+            item.Stop();
+        }
+    }
+
+    private AudioSource ChangeTrack()
     {
         var newTrack = _musics.GetRandom();
 

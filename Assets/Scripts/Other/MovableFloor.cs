@@ -49,11 +49,11 @@ public class MovableFloor : PausedMonoBehaviour, ISpeed
         }
     }
 
-    public void SetDecorationObjects(List<GameObject> objectsList, int amount)
+    public void SetDecorationObjects(List<GameObject> objectsList)
     {
-        if (_spawnPoints.Count > 0 && amount > 0)
+        if (_spawnPoints.Count > 0 && objectsList.Count > 0)
         {
-            for (int i = 0; i < amount; i++)
+            for (int i = 0; i < _spawnPoints.Count; i++)
             {
                 GameObject newObj = objectsList.GetRandom();
                 newObj = Instantiate(newObj);

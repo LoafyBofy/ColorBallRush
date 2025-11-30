@@ -6,6 +6,7 @@ public class MainMenuBootstrap : MonoBehaviour
     [SerializeField] private SfxController _sfxController;
     [SerializeField] private SceneShop _sceneShop;
     [SerializeField] private SkinShop _skinShop;
+    [SerializeField] private BestScore _bestScore;
 
     [Space]
     [SerializeField] private SceneInfo _standartScene;
@@ -23,6 +24,7 @@ public class MainMenuBootstrap : MonoBehaviour
         _sfxController.Init(_dataSaver);
         _sceneShop.Init(_dataSaver);
         _skinShop.Init(_dataSaver);
+        _bestScore.Init(_dataSaver);
     }
 
     private void LoadBaseParams()

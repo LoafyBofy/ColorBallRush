@@ -15,7 +15,7 @@ public class Observer : MonoBehaviour
     private DataSaver _saver;
     private Pause _pause;
     private Wallet _wallet;
-    private ScoreUpdater _scoreResult;
+    private ScoreUpdater _currentScore;
     private PlayerBall _player;
     private Spawner _spawner;
     private bool _canRevive = true;
@@ -26,6 +26,8 @@ public class Observer : MonoBehaviour
         _spawner = spawner;
         _pause = ServiceLocator.GetService(_pause);
         _saver = ServiceLocator.GetService(_saver);
+        _currentScore = ServiceLocator.GetService(_currentScore);
+        _wallet = ServiceLocator.GetService(_wallet);
     }
 
     private void OnEnable()
@@ -60,24 +62,27 @@ public class Observer : MonoBehaviour
 
     public void Restart()
     {
-        // делаем тоже самое что и в Revive, но только сбрасываес до нуля счёт и монетки
-        // !!! предварительно записав их в PlayerPrefs
+        SaveProgress();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // не делаем так!
     }
 
     public void ShowResultPanel()
     {
-        _deathPanel.SetActive(false);
-        _resultPanel.SetActive(true);
+        SaveProgress();
 
-        _scoreResult = ServiceLocator.GetService(_scoreResult);
-        _wallet = ServiceLocator.GetService(_wallet);
-
-        _resultScore.text = _scoreResult.Score.ToString();
+        _resultScore.text = _currentScore.Score.ToString();
         _resultCoins.text = _wallet.Coins.ToString();
 
-        _saver.SetScore((int)_scoreResult.Score);
+        _deathPanel.SetActive(false);
+        _resultPanel.SetActive(true);
+    }
+
+    private void SaveProgress()
+    {
+        int bestResult = _saver.GetScore();
+        if (bestResult < (int)_currentScore.Score)
+            _saver.SetScore((int)_currentScore.Score);
 
         int currentCoinsAmount = _saver.GetCoins();
         _saver.SetCoins(currentCoinsAmount + (int)_wallet.Coins);
@@ -85,6 +90,8 @@ public class Observer : MonoBehaviour
 
     public void GiveUp()
     {
+        SaveProgress();
+
         SceneManager.LoadScene("MainMenu");
     }
 }

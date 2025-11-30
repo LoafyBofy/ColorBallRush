@@ -15,6 +15,7 @@ public class PlayerInput : MonoBehaviour
         _inputSystem.Enable();
     }
 
+
     private void OnEnable()
     {
         _inputSystem.Gameplay.Left.performed += PressLeft;
