@@ -4,9 +4,13 @@ using YG;
 
 public class YSDK : MonoBehaviour
 {
+    [Header("Events")]
     [SerializeField] private UnityEvent[] _onRewardAdvEvents;
     [SerializeField] private UnityEvent[] _onInterAdvEvents;
     [SerializeField] private UnityEvent[] _onAnyAdvCloseEvents;
+
+    [Header("Params")]
+    [SerializeField] private bool _showAdvOnStart = false;
 
     private const string REVIVE_ID = "Revive";
 
@@ -14,7 +18,8 @@ public class YSDK : MonoBehaviour
     {
         YG2.StickyAdActivity(true);
 
-        ShowInterAdv();
+        if (_showAdvOnStart)
+            ShowInterAdv();
     }
 
     private void OnEnable()
